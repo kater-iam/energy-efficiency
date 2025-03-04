@@ -1,0 +1,6 @@
+---
+description: Basic rules
+globs: 
+---
+- Use React, Vite, Typescript
+- Deploy target is GitHub Page
