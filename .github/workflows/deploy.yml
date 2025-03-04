@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# GitHubページへのデプロイ権限設定
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時に1つのデプロイのみ実行
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ビルドとデプロイ
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: 依存関係のインストール
+        run: npm ci
+
+      - name: ビルド
+        run: npm run build
+
+      - name: GitHubページ用の設定
+        uses: actions/configure-pages@v4
+
+      - name: ビルド成果物のアップロード
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: GitHubページへのデプロイ
+        id: deployment
+        uses: actions/deploy-pages@v4 
