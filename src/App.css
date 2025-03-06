@@ -284,3 +284,128 @@ input:focus {
     padding: 1.5rem;
   }
 }
+
+/* 歴史的価格チャート用のスタイル */
+.historical-chart-container {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.historical-chart-container h3 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+.energy-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.energy-selector label {
+  margin: 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.energy-selector input {
+  margin-right: 5px;
+}
+
+.chart-container {
+  display: flex;
+  height: 250px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  position: relative;
+}
+
+.price-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10px;
+  color: #666;
+  font-size: 12px;
+  width: 50px;
+}
+
+.chart-area {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 200px;
+  overflow-x: auto;
+  padding-bottom: 25px;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 10px;
+  margin: 0 2px;
+  position: relative;
+}
+
+.bar {
+  width: 8px;
+  background-color: #4caf50;
+  transition: height 0.3s ease;
+}
+
+.no-data {
+  border: 1px dashed #999;
+  background-color: transparent;
+}
+
+.year-label {
+  position: absolute;
+  bottom: -25px;
+  font-size: 10px;
+  color: #666;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  white-space: nowrap;
+}
+
+.chart-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 30px;
+}
+
+.chart-note p {
+  margin: 5px 0;
+}
+
+/* チャートセクション */
+.chart-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* 各エネルギータイプ別の色 */
+.energy-selector input[value="electricity"]:checked ~ .chart-area .bar:not(.no-data) {
+  background-color: #4caf50; /* 電気: 緑 */
+}
+
+.energy-selector input[value="cityGas"]:checked ~ .chart-area .bar:not(.no-data) {
+  background-color: #2196f3; /* 都市ガス: 青 */
+}
+
+.energy-selector input[value="lpg"]:checked ~ .chart-area .bar:not(.no-data) {
+  background-color: #9c27b0; /* プロパンガス: 紫 */
+}
+
+.energy-selector input[value="oil"]:checked ~ .chart-area .bar:not(.no-data) {
+  background-color: #ff9800; /* 灯油: オレンジ */
+}

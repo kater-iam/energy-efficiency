@@ -1,4 +1,6 @@
 // エネルギー価格データをTypeScriptとして直接定義
+// このファイルは scripts/csv-to-ts.js によって自動生成されました
+// 生成日時: 2025-03-06T00:08:31.004Z
 
 export interface EnergyData {
   year: string;
@@ -117,7 +119,7 @@ export const energyPricesData: EnergyDataResponse = {
         "note": "灯油の全国平均価格（原油高の影響）"
       },
       "ac_efficiency": {
-        "value": 5.0,
+        "value": 5,
         "note": "一般家庭用エアコンの平均APF値"
       },
       "notes": "ウクライナ情勢等による世界的な資源価格高騰の影響が大きい年"
@@ -153,7 +155,7 @@ export const energyPricesData: EnergyDataResponse = {
         "note": "基本料金と従量課金の全国平均"
       },
       "gas": {
-        "price": 172.0,
+        "price": 172,
         "unit": "円/m³",
         "note": "都市ガスの全国平均単価"
       },
@@ -166,7 +168,7 @@ export const energyPricesData: EnergyDataResponse = {
         "value": 5.5,
         "note": "一般家庭用エアコンの平均APF値（省エネ性能向上）"
       },
-      "notes": "省エネ家電への買い替え促進政策の影響あり"
+      "notes": "省エネ家電への買い替え促進政策の影響あり "
     }
   ]
-}; 
+};

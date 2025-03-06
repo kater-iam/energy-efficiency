@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import './App.css'
 import { EnergyData, EnergyDataResponse, energyPricesData } from './data/energyPrices'
+import HistoricalPriceChart from './components/HistoricalPriceChart'
 
 function App() {
   // 入力値の状態管理
@@ -168,7 +169,7 @@ function App() {
         )}
       </div>
       
-      <div className="input-section">
+      <div className="price-inputs">
         <div className="input-group">
           <label htmlFor="electricity">電気代単価 (円/kWh):</label>
           <input 
@@ -229,7 +230,7 @@ function App() {
           )}
         </div>
       </div>
-      
+
       <div className="results-section">
         <h2>計算結果 (円/kWh)</h2>
         <div className="results-table">
@@ -272,7 +273,14 @@ function App() {
           </ul>
         </div>
       </div>
-      
+
+      {/* 新しく追加: 歴史的価格チャート */}
+      <div className="chart-section">
+        <h2>エネルギー価格の歴史的推移</h2>
+        <p>1950年から現在までのエネルギー価格の推移を見ることができます。</p>
+        <HistoricalPriceChart startYear={1950} endYear={2024} />
+      </div>
+
       <footer className="app-footer">
         <p>© {new Date().getFullYear()} エネルギー効率計算ツール - <a href="https://github.com/kater-iam/energy-efficiency" target="_blank" rel="noopener noreferrer">GitHub</a></p>
       </footer>

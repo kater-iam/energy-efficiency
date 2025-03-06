@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "import-csv": "node scripts/csv-to-ts.js"
+    "import-csv": "node scripts/csv-to-ts.js",
+    "import-prices": "node scripts/prices-converter.js"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
