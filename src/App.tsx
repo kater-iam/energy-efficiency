@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import './App.css'
-import { EnergyData, EnergyDataResponse, energyPricesData } from './data/energyPrices'
+import { EnergyData, energyPricesData } from './data/energyPrices'
 import HistoricalPriceChart from './components/HistoricalPriceChart'
 
 function App() {
