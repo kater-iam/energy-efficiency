@@ -193,6 +193,7 @@ input:focus {
   padding: 1rem;
   border-radius: 6px;
   border-left: 3px solid #3498db;
+  margin-bottom: 1.5rem;
 }
 
 .efficiency-ranking ol {
@@ -201,6 +202,53 @@ input:focus {
 
 .efficiency-ranking li {
   padding: 0.3rem 0;
+}
+
+/* 計算に関する注意事項 */
+.calculation-notes {
+  background-color: #fff8e1;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #ffc107;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.calculation-notes h3 {
+  color: #795548;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.calculation-notes ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.calculation-notes li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* フッター */
+.app-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+.app-footer a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
 }
 
 /* ローディングとエラー表示 */

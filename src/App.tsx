@@ -1,34 +1,6 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import './App.css'
-
-// エネルギーデータの型定義
-interface EnergyData {
-  year: string;
-  electricity: {
-    price: number;
-    unit: string;
-    note: string;
-  };
-  gas: {
-    price: number;
-    unit: string;
-    note: string;
-  };
-  oil: {
-    price: number;
-    unit: string;
-    note: string;
-  };
-  ac_efficiency: {
-    value: number;
-    note: string;
-  };
-  notes: string;
-}
-
-interface EnergyDataResponse {
-  years: EnergyData[];
-}
+import { EnergyData, EnergyDataResponse, energyPricesData } from './data/energyPrices'
 
 function App() {
   // 入力値の状態管理
@@ -54,30 +26,23 @@ function App() {
 
   // データの読み込み
   useEffect(() => {
-    const fetchEnergyData = async () => {
-      try {
-        const response = await fetch('/energy-prices.json');
-        if (!response.ok) {
-          throw new Error('データの読み込みに失敗しました');
-        }
-        const data: EnergyDataResponse = await response.json();
-        setEnergyData(data.years);
-        
-        // 最新の年をデフォルトで選択
-        if (data.years.length > 0) {
-          const latestYear = data.years[data.years.length - 1].year;
-          setSelectedYear(latestYear);
-        }
-        
-        setIsLoading(false);
-      } catch (err) {
-        setError('データの読み込み中にエラーが発生しました');
-        setIsLoading(false);
-        console.error('データ読み込みエラー:', err);
+    try {
+      // 直接インポートしたデータを使用
+      const data = energyPricesData;
+      setEnergyData(data.years);
+      
+      // 最新の年をデフォルトで選択
+      if (data.years.length > 0) {
+        const latestYear = data.years[data.years.length - 1].year;
+        setSelectedYear(latestYear);
       }
-    };
-
-    fetchEnergyData();
+      
+      setIsLoading(false);
+    } catch (err) {
+      setError('データの読み込み中にエラーが発生しました');
+      setIsLoading(false);
+      console.error('データ読み込みエラー:', err);
+    }
   }, []);
 
   // 選択された年のデータが変更されたときの処理
@@ -296,7 +261,21 @@ function App() {
             ))}
           </ol>
         </div>
+        
+        <div className="calculation-notes">
+          <h3>計算に関する注意事項</h3>
+          <ul>
+            <li>灯油のリッターあたりの発熱量は 約36.7MJ（メガジュール） で、約8,750kcal（キロカロリー）に相当し、約10.2kWh（キロワット時）として計算しています。</li>
+            <li>都市ガスは約45MJ/m³で、約12.5kWhに相当するとして計算しています。</li>
+            <li>電気ヒーターの変換効率は100%として計算しています。</li>
+            <li>エアコンの暖房効率はCOP（またはAPF）の値を使用しています。</li>
+          </ul>
+        </div>
       </div>
+      
+      <footer className="app-footer">
+        <p>© {new Date().getFullYear()} エネルギー効率計算ツール - <a href="https://github.com/kater-iam/energy-efficiency" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+      </footer>
     </div>
   );
 }

@@ -1,4 +1,34 @@
-{
+// エネルギー価格データをTypeScriptとして直接定義
+
+export interface EnergyData {
+  year: string;
+  electricity: {
+    price: number;
+    unit: string;
+    note: string;
+  };
+  gas: {
+    price: number;
+    unit: string;
+    note: string;
+  };
+  oil: {
+    price: number;
+    unit: string;
+    note: string;
+  };
+  ac_efficiency: {
+    value: number;
+    note: string;
+  };
+  notes: string;
+}
+
+export interface EnergyDataResponse {
+  years: EnergyData[];
+}
+
+export const energyPricesData: EnergyDataResponse = {
   "years": [
     {
       "year": "2019",
@@ -139,4 +169,4 @@
       "notes": "省エネ家電への買い替え促進政策の影響あり"
     }
   ]
-} 
+}; 
